@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.studio-manager</groupId>
 	<artifactId>fitness-classes-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>studio-api</name>
+	<version>1.0</version>
+	<name>fitness-classes-api</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
