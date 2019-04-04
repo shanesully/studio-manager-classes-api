@@ -1,0 +1,9 @@
+com/studiomanager/studioapi/controllers/impl/FitnessClassControllerImpl.class
+com/studiomanager/studioapi/domain/Booking.class
+com/studiomanager/studioapi/services/BookingService.class
+com/studiomanager/studioapi/controllers/FitnessClassController.class
+com/studiomanager/studioapi/domain/FitnessClass.class
+com/studiomanager/studioapi/services/impl/FitnessClassMockServiceImpl.class
+com/studiomanager/studioapi/services/FitnessClassMockService.class
+com/studiomanager/studioapi/services/impl/BookingServiceImpl.class
+com/studiomanager/studioapi/StudioApiApplication.class

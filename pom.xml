@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.studio-manager</groupId>
-	<artifactId>studio-api</artifactId>
+	<artifactId>fitness-classes-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>studio-api</name>
 	<description>Demo project for Spring Boot</description>
@@ -28,6 +28,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.8</version>
 		</dependency>
 	</dependencies>
 
