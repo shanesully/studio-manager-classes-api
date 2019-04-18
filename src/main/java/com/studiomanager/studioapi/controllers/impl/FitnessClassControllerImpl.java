@@ -1,9 +1,12 @@
 package com.studiomanager.studioapi.controllers.impl;
 
 import com.studiomanager.studioapi.controllers.FitnessClassController;
+import com.studiomanager.studioapi.domain.ErrorEntity;
 import com.studiomanager.studioapi.domain.FitnessClass;
 import com.studiomanager.studioapi.services.impl.BookingServiceImpl;
 import com.studiomanager.studioapi.services.impl.FitnessClassMockServiceImpl;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +65,11 @@ public class FitnessClassControllerImpl implements FitnessClassController {
 
       return new ResponseEntity<>("Fitness class successfully deleted", HttpStatus.OK);
     } else {
-      return new ResponseEntity<>("Fitness class deletion failed - Bookings exist", HttpStatus.OK);
+      ErrorEntity errorEntity = new ErrorEntity();
+
+      errorEntity.setReason("Fitness class Deletion failed - Existing Bookings");
+
+      return new ResponseEntity<>(errorEntity, HttpStatus.BAD_REQUEST);
     }
   }
 
@@ -70,7 +77,9 @@ public class FitnessClassControllerImpl implements FitnessClassController {
   public ResponseEntity<Object> incrementFitnessClassCapacity(@PathVariable("id") int id) {
     fitnessClassMockService.getMockFitnessClasses().get(id).incrementCapacity();
 
-    return new ResponseEntity<>(fitnessClassMockService.getMockFitnessClasses().get(id), HttpStatus.OK);
+    String classId = fitnessClassMockService.getMockFitnessClasses().get(id).toString();
+
+    return new ResponseEntity<>("Class: " + classId + " successfully incremented", HttpStatus.OK);
   }
 
   @RequestMapping(value="/classes/{id}/decrement")
