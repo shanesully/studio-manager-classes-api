@@ -9,6 +9,4 @@ public interface FitnessClassController {
     public ResponseEntity<Object> createFitnessClass(FitnessClass fitnessClass);
     public ResponseEntity<Object> updateFitnessClass(int id, FitnessClass fitnessClass);
     public ResponseEntity<Object> deleteFitnessClass(int id);
-    public ResponseEntity<Object> incrementFitnessClassCapacity(int id);
-    public ResponseEntity<Object> decrementFitnessClassCapacity(int id);
 }
