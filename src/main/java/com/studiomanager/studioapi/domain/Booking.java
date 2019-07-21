@@ -1,14 +1,21 @@
 package com.studiomanager.studioapi.domain;
 
 import java.time.LocalDate;
-import org.springframework.stereotype.Component;
 
-@Component("booking")
 public class Booking {
   int id;
   int classId;
   String memberName;
   LocalDate bookingDate;
+
+  private Booking() {}
+
+  private Booking(int id, int classId, String memberName, LocalDate bookingDate) {
+    id = id;
+    classId = classId;
+    memberName = memberName;
+    bookingDate = bookingDate;
+  }
 
   public int getId() {
     return id;
@@ -40,5 +47,36 @@ public class Booking {
 
   public void setBookingDate(LocalDate bookingDate) {
     this.bookingDate = bookingDate;
+  }
+
+  public static class Builder {
+    int id;
+    int classId;
+    String memberName;
+    LocalDate bookingDate;
+
+    public Builder withId(int id) {
+      id = id;
+      return this;
+    }
+
+    public Builder withClassId(int classId) {
+      classId = classId;
+      return this;
+    }
+
+    public Builder withMemberName(String memberName) {
+      memberName = memberName;
+      return this;
+    }
+
+    public Builder withBookingDate(LocalDate bookingDate) {
+      bookingDate = bookingDate;
+      return this;
+    }
+
+    public Booking build() {
+      return new Booking(id, classId, memberName, bookingDate);
+    }
   }
 }
