@@ -91,7 +91,7 @@ public class FitnessClassesEndpointTests {
 				.exchange(URI + PORT + CLASSES_ENDPOINT, HttpMethod.POST, request, String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-		assertThat(response.getBody()).isEqualTo("Fitness class created");
+		assertThat(response.getBody()).isEqualTo("Fitness classes updated");
 		assertThat(restTemplate.getForObject(URI + PORT + CLASSES_ENDPOINT,
 				String.class)).contains("Pilates");
 		assertThat(restTemplate.getForObject(URI + PORT + CLASSES_ENDPOINT,

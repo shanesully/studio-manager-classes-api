@@ -50,18 +50,25 @@ public class FitnessClassService {
     return LOGGER;
   }
 
-  public void addClass(FitnessClass fitnessClass) {
-    fitnessClasses.put(fitnessClasses.size() + 1, fitnessClass);
-    LOGGER.info("Added fitness class: " + fitnessClass.getId());
-  }
-
   public void removeClassById(int id) {
     fitnessClasses.remove(id);
     LOGGER.info("Removed fitness class: " + id);
   }
 
-  public void updateClass(FitnessClass fitnessClass) {
-    removeClassById(fitnessClass.getId());
-    addClass(fitnessClass);
+  public void createUpdateClass(FitnessClass fitnessClass) {
+    try {
+      if (fitnessClass.getId() != null) {
+        fitnessClasses.put(fitnessClass.getId(), fitnessClass);
+      } else {
+        int id = fitnessClasses.size() + 1;
+
+        fitnessClass.setId(id);
+        fitnessClasses.put(id, fitnessClass);
+      }
+
+      LOGGER.info("Updated fitness classes: " + fitnessClass.getId());
+    } catch (Exception e) {
+      LOGGER.info("Failed to update fitness classes");
+    }
   }
 }

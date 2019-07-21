@@ -20,12 +20,12 @@ public class FitnessClassControllerImpl implements FitnessClassController {
 
   @Autowired
   private BookingService bookingService;
+  
+  @RequestMapping(value="/classes", method={ RequestMethod.POST, RequestMethod.PUT })
+  public ResponseEntity<Object> createUpdateFitnessClass(@RequestBody FitnessClass fitnessClass) {
+    fitnessClassService.createUpdateClass(fitnessClass);
 
-  @RequestMapping(value="/classes", method=RequestMethod.POST)
-  public ResponseEntity<Object> createFitnessClass(@RequestBody FitnessClass fitnessClass) {
-    fitnessClassService.addClass(fitnessClass);
-
-    return new ResponseEntity<>("Fitness class created", HttpStatus.CREATED);
+    return new ResponseEntity<>("Fitness classes updated", HttpStatus.CREATED);
   }
 
   @RequestMapping(value="/classes")
@@ -38,19 +38,12 @@ public class FitnessClassControllerImpl implements FitnessClassController {
     return new ResponseEntity<>(fitnessClassService.getClassById(id), HttpStatus.OK);
   }
 
-  @RequestMapping(value="/classes/{id}", method=RequestMethod.PUT)
-  public ResponseEntity<Object> updateFitnessClass(@PathVariable("id") int id, @RequestBody FitnessClass fitnessClass) {
-    fitnessClassService.updateClass(fitnessClass);
-
-    return new ResponseEntity<>("Fitness class updated successfully", HttpStatus.OK);
-  }
-
   @RequestMapping(value="/classes/{id}", method=RequestMethod.DELETE)
   public ResponseEntity<Object> deleteFitnessClass(@PathVariable("id") int id) {
     if(!bookingsExistForClass(id)) {
       fitnessClassService.removeClassById(id);
 
-      return new ResponseEntity<>("Fitness class" + id + " successfully deleted", HttpStatus.OK);
+      return new ResponseEntity<>("Fitness class " + id + " successfully deleted", HttpStatus.OK);
     } else {
       return new ResponseEntity<>("Fitness class " + id + "deletion failed - Bookings exist", HttpStatus.OK);
     }

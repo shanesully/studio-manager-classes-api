@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class FitnessClass {
 
-  private int id;
+  private Integer id;
   private String className;
   private LocalDate startDate;
   private LocalDate endDate;
@@ -16,11 +16,11 @@ public class FitnessClass {
     this.capacity = capacity;
   }
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

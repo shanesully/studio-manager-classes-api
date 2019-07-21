@@ -7,16 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class BookingService {
-  @Value("${port}")
-  private String PORT;
 
-  @Value("${host}")
-  private String HOST;
+  private static final String HOST = "http://localhost";
+  private static final String PORT = "8090";
+  private static final String BOOKINGS_ENDPOINT = "/bookings";
 
-  @Value("${bookingsEndpoint}")
-  private String BOOKINGS_ENDPOINT;
-
-  final String URI = HOST + ":" + PORT + BOOKINGS_ENDPOINT;
+  private static String URI = HOST + ":" + PORT + BOOKINGS_ENDPOINT;
   RestTemplate restTemplate = new RestTemplate();
 
   public String getBookings() {
